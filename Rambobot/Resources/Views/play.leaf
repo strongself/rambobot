@@ -1,0 +1,86 @@
+#extend("base")
+
+#export("head") {
+    <title>Rambler.iOS - Что? Где? Когда?</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <style>
+    a.btn.btn-lg.btn-lg-answer {
+      width: 200px;
+      height: 60px;
+      padding: 16px 16px;
+    }
+    </style>
+#raw() {
+    <script>
+      function disableButton() {
+        $("#answer-button").addClass("disabled");
+        $("#answer-button").addClass("btn-warning");
+        $("#answer-button").removeClass("btn-success");
+        $("#textValue").html("Ожидайте");
+      }
+
+      function activateButton() {
+        $("#answer-button").removeClass("disabled");
+        $("#answer-button").removeClass("btn-warning");
+        $("#answer-button").addClass("btn-success");
+        $("#textValue").html("Играйте");
+      }
+
+    $( document ).ready(function() {
+      $( "#answer-button" ).click(function() {
+        $.get( "/v1/games/rounds/click", function( data ) {
+          if (data.status == "ok") {
+            disableButton();
+          }
+        });
+      });
+      var refreshId = setInterval( function()
+      {
+        $.get( "/v1/games/rounds/check", function( data ) {
+          if (data.active == 1 && data.canClick == 1) {
+            activateButton();
+          } else {
+            disableButton();
+          }
+        });
+      }, 3000);
+    });
+    </script>
+}
+}
+
+#export("body") {
+
+  <div class="container text-center">
+  #raw() {
+    <h1 class="cover-heading">Rambler.iOS #9</h1>
+    <h3 class="masthead-brand"></h3>
+    }
+    <div class="container-fluid">
+    <div class="row">
+      <form class="form-signin">
+        <h2 class="form-signin-heading"><span id="textValue">Ожидайте</span>, #(name)</h2>
+
+        <br>
+        #raw() {
+        <div class="inner cover">
+              <p class="lead">
+                <a href="#" class="btn btn-warning btn-lg btn-lg-answer disabled" id="answer-button">
+                  Ответить
+                </a>
+
+                <!-- Активная кнопка
+                  <br> <br>
+                  <a href="#" class="btn btn-success btn-lg btn-lg-answer">
+                    Ответить
+                  </a>
+                  -->
+              </p>
+          </div>
+        }
+      </form>
+</div>
+</div>
+    </div> <!-- /container -->
+
+}

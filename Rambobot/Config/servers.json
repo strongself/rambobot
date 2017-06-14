@@ -1,0 +1,7 @@
+{
+	"default": {
+		"port": "$PORT:8080",
+		"host": "localhost",
+		"securityLayer": "none"
+	}
+}

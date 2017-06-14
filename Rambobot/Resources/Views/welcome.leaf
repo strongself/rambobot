@@ -1,0 +1,30 @@
+#extend("base")
+
+#export("head") {
+    <title>Rambler.iOS - Что? Где? Когда?</title>
+}
+
+#export("body") {
+
+  <div class="container text-center">
+  #raw() {
+    <h1 class="cover-heading">Rambler.iOS #9</h1>
+    <h3 class="masthead-brand"></h3>
+    }
+    <div class="container-fluid">
+    <div class="row">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Пожалуйста, зарегистрируйтесь</h2>
+        <br>
+        <a href="https://oauth.vk.com/authorize?client_id=6042345&display=page&redirect_uri=http://ios-fun.ru/auth/vk&scope=&response_type=code" class="btn btn-lg btn-social btn-vk btn-block">
+          <span class="fa fa-vk"></span>ВКонтакте
+        </a> <br>
+        <a href="https://www.facebook.com/v2.9/dialog/oauth?client_id=242860766193529&redirect_uri=http://ios-fun.ru/auth/fb" class="btn btn-lg btn-social btn-facebook btn-block">
+            <span class="fa fa-facebook"></span>Facebook
+          </a>
+      </form>
+</div>
+</div>
+    </div> <!-- /container -->
+
+}

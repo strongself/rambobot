@@ -1,0 +1,13 @@
+#extend("base")
+
+#export("head") {
+    <title>Rambler.iOS - Что? Где? Когда?</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.location.href = "/auth?"+window.location.hash.substring(1);
+    </script>
+}
+
+#export("body") {
+
+}
