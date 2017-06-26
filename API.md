@@ -1,21 +1,21 @@
 # API Docs
 
-## Методы для работы с игрой
+## Game
 
-1. Создать игру
+1. Create new game
 ```
 @method - POST
 @params - game_name
 @url    - /v1/games
 ```
 
-2. Данные о текущей игре
+2. Return current game data
 ```
 @method - GET
 @params - nil
 @url    - /v1/games
 ```
-Ответ
+Result
 ```json
 {
   "active": 1,
@@ -25,9 +25,9 @@
 ```
 
 ---
-## Методы раундов игр
+## Rounds
 
-1. Начать новый раунд игры для приёма нажатий
+1. Start new round
 ```
 @method - POST
 @params - game_id
@@ -42,13 +42,13 @@
 }
 ```
 
-2. Получить текущий раунд
+2. Return current round data
 ```
 @method - GET
 @params - nil
 @url    - /v1/games/rounds
 ```
-Ответ
+Result
 ```json
 {
   "active": 1,
@@ -57,7 +57,7 @@
 }
 ```
 
-3. Закрыть раунд игры
+3. Marks a round as close.
 ```
 @method - PUT
 @params - round_id
@@ -65,22 +65,22 @@
 ```
 
 ---
-## Методы ответов для раунда
+## Answers
 
-1. Добавить ответ
+1. Add answer for round
 ```
 @method - POST
 @params - round_id, user_id, answer=1|0
 @url    - /v1/answers
 ```
 
-2. Получить список пользователей для активного раунда
+2. Returns the current round users list
 ```
 @method - GET
 @params - nil
 @url    - /v1/answers/users
 ```
-Ответ
+Result
 ```json
 [
   {
